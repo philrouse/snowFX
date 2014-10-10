@@ -1,0 +1,93 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module curves</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>curves</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/i7219595/Handins/CAP1/ROUSE_PHILIP/02_SCRIPTING/curves.py">/home/i7219595/Handins/CAP1/ROUSE_PHILIP/02_SCRIPTING/curves.py</a></font></td></tr></table>
+    <p><tt>Module&nbsp;of&nbsp;procedures&nbsp;to&nbsp;create&nbsp;various&nbsp;spiral&nbsp;curves<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;contains&nbsp;the&nbsp;following&nbsp;classes&nbsp;and&nbsp;procedures<br>
+hyperbolic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;creates&nbsp;a&nbsp;hyperbolic&nbsp;spiral<br>
+logarithmic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;creates&nbsp;a&nbsp;logarithmic&nbsp;spiral<br>
+archimedes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;creates&nbsp;a&nbsp;Archimedes&nbsp;spiral<br>
+archimedesDouble&nbsp;:&nbsp;creates&nbsp;a&nbsp;Archimedes&nbsp;spiral&nbsp;that&nbsp;spirals&nbsp;out&nbsp;then&nbsp;in&nbsp;again<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;creates&nbsp;a&nbsp;variety&nbsp;of&nbsp;simple&nbsp;spirals&nbsp;allowing&nbsp;the&nbsp;user&nbsp;to&nbsp;easily&nbsp;<br>
+make&nbsp;some&nbsp;visually&nbsp;pleasing&nbsp;effects.&nbsp;However&nbsp;any&nbsp;curve&nbsp;can&nbsp;be&nbsp;used&nbsp;as&nbsp;a&nbsp;base&nbsp;<br>
+for&nbsp;particle&nbsp;effects&nbsp;allowing&nbsp;for&nbsp;much&nbsp;more&nbsp;complex&nbsp;and&nbsp;versatile&nbsp;uses&nbsp;for&nbsp;<br>
+this&nbsp;project.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-archimedes"><strong>archimedes</strong></a>(loops, spiralIn, gaps, height)</dt><dd><tt>Creates&nbsp;a&nbsp;Archimedes&nbsp;spiral<br>
+&nbsp;<br>
+loops&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;complete&nbsp;turns&nbsp;the&nbsp;spiral&nbsp;should&nbsp;have<br>
+spiralIn&nbsp;:&nbsp;Direction&nbsp;of&nbsp;the&nbsp;generated&nbsp;curve<br>
+gaps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Distance&nbsp;between&nbsp;successive&nbsp;turnings<br>
+height&nbsp;&nbsp;&nbsp;:&nbsp;Vertical&nbsp;height&nbsp;of&nbsp;the&nbsp;spiral<br>
+&nbsp;<br>
+The&nbsp;curve&nbsp;is&nbsp;created&nbsp;and&nbsp;the&nbsp;required&nbsp;number&nbsp;of&nbsp;control&nbsp;vertices&nbsp;is&nbsp;calculated&nbsp;<br>
+along&nbsp;with&nbsp;the&nbsp;fraction&nbsp;of&nbsp;the&nbsp;height&nbsp;each&nbsp;CV&nbsp;needs&nbsp;to&nbsp;be&nbsp;placed.&nbsp;The&nbsp;polar&nbsp;<br>
+equation&nbsp;of&nbsp;a&nbsp;Archimedes&nbsp;spiral&nbsp;is&nbsp;r=a+b*theta&nbsp;where&nbsp;a&nbsp;rotates&nbsp;the&nbsp;spiral&nbsp;<br>
+and&nbsp;b&nbsp;controls&nbsp;distance&nbsp;between&nbsp;successive&nbsp;turnings.&nbsp;The&nbsp;polar&nbsp;coordinates&nbsp;<br>
+are&nbsp;converted&nbsp;to&nbsp;Cartesian&nbsp;form&nbsp;by&nbsp;x=r*math.cos(theta)&nbsp;and&nbsp;y=r*math.sin(theta).<br>
+The&nbsp;direction&nbsp;of&nbsp;the&nbsp;curve&nbsp;can&nbsp;be&nbsp;reversed&nbsp;based&nbsp;on&nbsp;the&nbsp;spiralInwards&nbsp;flag.</tt></dd></dl>
+ <dl><dt><a name="-archimedesDouble"><strong>archimedesDouble</strong></a>(loops, spiralDown, gaps, height)</dt><dd><tt>Creates&nbsp;a&nbsp;Archimedes&nbsp;spiral&nbsp;that&nbsp;spirals&nbsp;out&nbsp;then&nbsp;in&nbsp;again<br>
+&nbsp;<br>
+loops&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;complete&nbsp;turns&nbsp;the&nbsp;spiral&nbsp;should&nbsp;have<br>
+spiralDown&nbsp;:&nbsp;Direction&nbsp;of&nbsp;the&nbsp;generated&nbsp;curve<br>
+growth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Growth&nbsp;factor<br>
+height&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Vertical&nbsp;height&nbsp;of&nbsp;the&nbsp;spiral<br>
+&nbsp;<br>
+The&nbsp;curve&nbsp;is&nbsp;created&nbsp;and&nbsp;the&nbsp;required&nbsp;number&nbsp;of&nbsp;control&nbsp;vertices&nbsp;is&nbsp;calculated&nbsp;<br>
+along&nbsp;with&nbsp;the&nbsp;fraction&nbsp;of&nbsp;the&nbsp;height&nbsp;each&nbsp;CV&nbsp;needs&nbsp;to&nbsp;be&nbsp;placed.&nbsp;The&nbsp;polar&nbsp;<br>
+equation&nbsp;of&nbsp;a&nbsp;Archimedes&nbsp;spiral&nbsp;is&nbsp;r=a+b*theta&nbsp;where&nbsp;a&nbsp;rotates&nbsp;the&nbsp;spiral&nbsp;<br>
+and&nbsp;b&nbsp;controls&nbsp;distance&nbsp;between&nbsp;successive&nbsp;turnings.&nbsp;The&nbsp;polar&nbsp;coordinates&nbsp;<br>
+are&nbsp;converted&nbsp;to&nbsp;Cartesian&nbsp;form&nbsp;by&nbsp;x=r*math.cos(theta)&nbsp;and&nbsp;y=r*math.sin(theta).<br>
+After&nbsp;half&nbsp;the&nbsp;CVs,&nbsp;I&nbsp;reverse&nbsp;the&nbsp;equation&nbsp;to&nbsp;wind&nbsp;the&nbsp;spiral&nbsp;back&nbsp;in.&nbsp;The&nbsp;<br>
+direction&nbsp;of&nbsp;the&nbsp;curve&nbsp;can&nbsp;be&nbsp;reversed&nbsp;based&nbsp;on&nbsp;the&nbsp;spiralDown&nbsp;flag.</tt></dd></dl>
+ <dl><dt><a name="-hyperbolic"><strong>hyperbolic</strong></a>(loops, spiralIn, height)</dt><dd><tt>Creates&nbsp;a&nbsp;hyperbolic&nbsp;spiral<br>
+&nbsp;<br>
+loops&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;complete&nbsp;turns&nbsp;the&nbsp;spiral&nbsp;should&nbsp;have<br>
+spiralIn&nbsp;:&nbsp;Direction&nbsp;of&nbsp;the&nbsp;generated&nbsp;curve<br>
+height&nbsp;&nbsp;&nbsp;:&nbsp;Vertical&nbsp;height&nbsp;of&nbsp;the&nbsp;spiral<br>
+&nbsp;<br>
+The&nbsp;curve&nbsp;is&nbsp;created&nbsp;and&nbsp;the&nbsp;required&nbsp;number&nbsp;of&nbsp;control&nbsp;vertices&nbsp;is&nbsp;calculated&nbsp;<br>
+along&nbsp;with&nbsp;the&nbsp;fraction&nbsp;of&nbsp;the&nbsp;height&nbsp;each&nbsp;CV&nbsp;needs&nbsp;to&nbsp;be&nbsp;placed.&nbsp;The&nbsp;polar&nbsp;<br>
+equation&nbsp;of&nbsp;a&nbsp;hyperbolic&nbsp;spiral&nbsp;is&nbsp;r=a/theta&nbsp;where&nbsp;a&nbsp;scales&nbsp;the&nbsp;spiral.&nbsp;The&nbsp;<br>
+polar&nbsp;coordinates&nbsp;are&nbsp;converted&nbsp;to&nbsp;Cartesian&nbsp;form&nbsp;by&nbsp;x=r*math.cos(theta)&nbsp;and&nbsp;<br>
+y=r*math.sin(theta).&nbsp;The&nbsp;direction&nbsp;of&nbsp;the&nbsp;curve&nbsp;can&nbsp;be&nbsp;reversed&nbsp;based&nbsp;on&nbsp;the&nbsp;<br>
+spiralInwards&nbsp;flag.</tt></dd></dl>
+ <dl><dt><a name="-logarithmic"><strong>logarithmic</strong></a>(loops, spiralIn, growth, height)</dt><dd><tt>Creates&nbsp;a&nbsp;logarithmic&nbsp;spiral<br>
+&nbsp;<br>
+loops&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;complete&nbsp;turns&nbsp;the&nbsp;spiral&nbsp;should&nbsp;have<br>
+spiralIn&nbsp;:&nbsp;Direction&nbsp;of&nbsp;the&nbsp;generated&nbsp;curve<br>
+growth&nbsp;&nbsp;&nbsp;:&nbsp;Growth&nbsp;factor<br>
+height&nbsp;&nbsp;&nbsp;:&nbsp;Vertical&nbsp;height&nbsp;of&nbsp;the&nbsp;spiral<br>
+&nbsp;<br>
+The&nbsp;curve&nbsp;is&nbsp;created&nbsp;and&nbsp;the&nbsp;required&nbsp;number&nbsp;of&nbsp;control&nbsp;vertices&nbsp;is&nbsp;calculated&nbsp;<br>
+along&nbsp;with&nbsp;the&nbsp;fraction&nbsp;of&nbsp;the&nbsp;height&nbsp;each&nbsp;CV&nbsp;needs&nbsp;to&nbsp;be&nbsp;placed.&nbsp;The&nbsp;polar&nbsp;<br>
+equation&nbsp;of&nbsp;a&nbsp;logarithmic&nbsp;spiral&nbsp;is&nbsp;r=a*e^(b*theta)&nbsp;where&nbsp;a&nbsp;scales&nbsp;the&nbsp;spiral&nbsp;<br>
+and&nbsp;b&nbsp;controls&nbsp;how&nbsp;tightly&nbsp;it&nbsp;winds.&nbsp;The&nbsp;polar&nbsp;coordinates&nbsp;are&nbsp;converted&nbsp;to&nbsp;<br>
+Cartesian&nbsp;form&nbsp;by&nbsp;x=r*math.cos(theta)&nbsp;and&nbsp;y=r*math.sin(theta).&nbsp;The&nbsp;direction&nbsp;<br>
+of&nbsp;the&nbsp;curve&nbsp;can&nbsp;be&nbsp;reversed&nbsp;based&nbsp;on&nbsp;the&nbsp;spiralInwards&nbsp;flag.</tt></dd></dl>
+</td></tr></table>
+</body></html>

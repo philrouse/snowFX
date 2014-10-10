@@ -1,0 +1,118 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module makeSnowflakes</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>makeSnowflakes</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/i7219595/Handins/CAP1/ROUSE_PHILIP/02_SCRIPTING/makeSnowflakes.py">/home/i7219595/Handins/CAP1/ROUSE_PHILIP/02_SCRIPTING/makeSnowflakes.py</a></font></td></tr></table>
+    <p><tt>Module&nbsp;of&nbsp;procedures&nbsp;to&nbsp;create&nbsp;snowflake&nbsp;and&nbsp;shard&nbsp;particle&nbsp;geometry<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;contains&nbsp;the&nbsp;following&nbsp;classes&nbsp;and&nbsp;procedures<br>
+combineParts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Combines&nbsp;a&nbsp;list&nbsp;of&nbsp;objects&nbsp;into&nbsp;one&nbsp;object<br>
+flakeIterate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Creates&nbsp;a&nbsp;branching&nbsp;iteration&nbsp;of&nbsp;the&nbsp;input&nbsp;branch<br>
+makeFlake&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Creates&nbsp;a&nbsp;single&nbsp;snowflake<br>
+crystalise&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Adds&nbsp;hexagonal&nbsp;crystals&nbsp;to&nbsp;the&nbsp;input&nbsp;branch<br>
+createColourList&nbsp;:&nbsp;Creates&nbsp;a&nbsp;list&nbsp;containing&nbsp;possible&nbsp;shading&nbsp;groups&nbsp;for&nbsp;particles<br>
+makeShards&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Creates&nbsp;a&nbsp;number&nbsp;of&nbsp;ice&nbsp;shard&nbsp;particles<br>
+makeSnowflakes&nbsp;&nbsp;&nbsp;:&nbsp;Creates&nbsp;a&nbsp;number&nbsp;of&nbsp;snowflakes<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;can&nbsp;be&nbsp;called&nbsp;upon&nbsp;to&nbsp;generate&nbsp;the&nbsp;geometry&nbsp;for&nbsp;the&nbsp;particles</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-combineParts"><strong>combineParts</strong></a>(partList, name)</dt><dd><tt>Combines&nbsp;a&nbsp;list&nbsp;of&nbsp;mesh&nbsp;objects&nbsp;into&nbsp;one&nbsp;object<br>
+&nbsp;<br>
+partList&nbsp;:&nbsp;List&nbsp;containing&nbsp;the&nbsp;names&nbsp;of&nbsp;the&nbsp;objects&nbsp;to&nbsp;be&nbsp;combined<br>
+name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;final&nbsp;object&nbsp;name<br>
+&nbsp;<br>
+All&nbsp;the&nbsp;element&nbsp;of&nbsp;the&nbsp;part&nbsp;list&nbsp;are&nbsp;selected&nbsp;and&nbsp;combined&nbsp;into&nbsp;<br>
+one&nbsp;object&nbsp;that's&nbsp;name&nbsp;is&nbsp;returned.</tt></dd></dl>
+ <dl><dt><a name="-createColourList"><strong>createColourList</strong></a>(rgb1, rgb2, transparency, glow, number)</dt><dd><tt>Creates&nbsp;a&nbsp;list&nbsp;containing&nbsp;possible&nbsp;shading&nbsp;groups&nbsp;for&nbsp;particles<br>
+&nbsp;<br>
+rgb1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;One&nbsp;end&nbsp;of&nbsp;the&nbsp;colour&nbsp;range&nbsp;in&nbsp;the&nbsp;form&nbsp;(r,g,b)<br>
+rgb2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;other&nbsp;end&nbsp;of&nbsp;the&nbsp;colour&nbsp;range&nbsp;in&nbsp;the&nbsp;form&nbsp;(r,g,b)<br>
+transparency&nbsp;:&nbsp;Alpha&nbsp;value&nbsp;for&nbsp;the&nbsp;shader<br>
+glow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Glow&nbsp;value&nbsp;for&nbsp;the&nbsp;shader<br>
+number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;colours&nbsp;to&nbsp;generate<br>
+&nbsp;<br>
+Random&nbsp;values&nbsp;for&nbsp;the&nbsp;r,g&nbsp;and&nbsp;b&nbsp;channels&nbsp;within&nbsp;the&nbsp;range&nbsp;of&nbsp;the&nbsp;two&nbsp;inputs&nbsp;<br>
+and&nbsp;generated&nbsp;and&nbsp;along&nbsp;with&nbsp;the&nbsp;transparency&nbsp;and&nbsp;glow&nbsp;values,&nbsp;are&nbsp;added&nbsp;to&nbsp;<br>
+a&nbsp;new&nbsp;phong&nbsp;shader.&nbsp;The&nbsp;shader&nbsp;is&nbsp;assigned&nbsp;a&nbsp;shading&nbsp;group&nbsp;and&nbsp;the&nbsp;group&nbsp;is&nbsp;<br>
+added&nbsp;the&nbsp;list.&nbsp;The&nbsp;list&nbsp;of&nbsp;shading&nbsp;groups&nbsp;is&nbsp;returned.</tt></dd></dl>
+ <dl><dt><a name="-crystalise"><strong>crystalise</strong></a>(base)</dt><dd><tt>Adds&nbsp;hexagonal&nbsp;crystals&nbsp;to&nbsp;a&nbsp;branch<br>
+&nbsp;<br>
+base&nbsp;:&nbsp;The&nbsp;branch&nbsp;to&nbsp;be&nbsp;crystallised<br>
+&nbsp;<br>
+A&nbsp;crystal&nbsp;is&nbsp;created&nbsp;by&nbsp;scaling&nbsp;the&nbsp;top&nbsp;and&nbsp;bottom&nbsp;rings&nbsp;of&nbsp;vertices&nbsp;of&nbsp;a&nbsp;<br>
+cylinder.&nbsp;The&nbsp;crystal&nbsp;is&nbsp;aligned&nbsp;to&nbsp;the&nbsp;base&nbsp;branch&nbsp;and&nbsp;scaled&nbsp;to&nbsp;match.&nbsp;<br>
+The&nbsp;crystal&nbsp;is&nbsp;duplicated,&nbsp;randomly&nbsp;distributed&nbsp;along&nbsp;the&nbsp;branch&nbsp;and&nbsp;scaled&nbsp;<br>
+relative&nbsp;to&nbsp;their&nbsp;positioning.&nbsp;The&nbsp;crystals&nbsp;are&nbsp;combined&nbsp;with&nbsp;the&nbsp;base&nbsp;branch&nbsp;<br>
+mesh&nbsp;and&nbsp;this&nbsp;object&nbsp;is&nbsp;returned.</tt></dd></dl>
+ <dl><dt><a name="-flakeIterate"><strong>flakeIterate</strong></a>(base, iterations, angle, scale)</dt><dd><tt>Creates&nbsp;a&nbsp;branching&nbsp;iteration&nbsp;of&nbsp;the&nbsp;input&nbsp;branch<br>
+&nbsp;<br>
+base&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;object&nbsp;to&nbsp;be&nbsp;duplicated<br>
+iterations&nbsp;:&nbsp;Number&nbsp;of&nbsp;iterations&nbsp;remaining<br>
+angle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;angle&nbsp;to&nbsp;rotate&nbsp;the&nbsp;branches<br>
+scale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;amount&nbsp;to&nbsp;scale&nbsp;the&nbsp;duplicated&nbsp;branches<br>
+&nbsp;<br>
+A&nbsp;list&nbsp;is&nbsp;made&nbsp;containing&nbsp;the&nbsp;bas&nbsp;object,&nbsp;if&nbsp;there&nbsp;a&nbsp;no&nbsp;more&nbsp;iterations&nbsp;<br>
+to&nbsp;perform,&nbsp;the&nbsp;list&nbsp;is&nbsp;returned.&nbsp;Otherwise,&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;base&nbsp;is&nbsp;<br>
+found&nbsp;and&nbsp;stored&nbsp;as&nbsp;offset&nbsp;and&nbsp;a&nbsp;random&nbsp;length&nbsp;is&nbsp;generated.&nbsp;The&nbsp;first&nbsp;<br>
+duplicate&nbsp;is&nbsp;made,&nbsp;and&nbsp;positioned&nbsp;at&nbsp;an&nbsp;angle&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;base,&nbsp;<br>
+it&nbsp;is&nbsp;crystallised,&nbsp;then&nbsp;duplicated&nbsp;and&nbsp;mirrored.&nbsp;The&nbsp;base&nbsp;for&nbsp;the&nbsp;next&nbsp;<br>
+iteration&nbsp;is&nbsp;created&nbsp;and&nbsp;the&nbsp;procedure&nbsp;is&nbsp;called&nbsp;again&nbsp;with&nbsp;one&nbsp;less&nbsp;<br>
+iteration.&nbsp;A&nbsp;list&nbsp;containing&nbsp;all&nbsp;the&nbsp;objects&nbsp;is&nbsp;returned.</tt></dd></dl>
+ <dl><dt><a name="-makeFlake"><strong>makeFlake</strong></a>(branches, radius)</dt><dd><tt>Creates&nbsp;a&nbsp;single&nbsp;snowflake<br>
+&nbsp;<br>
+branches&nbsp;:&nbsp;number&nbsp;of&nbsp;side&nbsp;branches<br>
+radius&nbsp;&nbsp;&nbsp;:&nbsp;radius&nbsp;of&nbsp;the&nbsp;snowflake<br>
+&nbsp;<br>
+A&nbsp;cube&nbsp;is&nbsp;created&nbsp;and&nbsp;transformed&nbsp;to&nbsp;taper&nbsp;with&nbsp;a&nbsp;diamond&nbsp;cross-section.&nbsp;<br>
+It&nbsp;is&nbsp;passed&nbsp;to&nbsp;flakeIterate&nbsp;to&nbsp;generate&nbsp;1/6&nbsp;of&nbsp;the&nbsp;snowflake.&nbsp;This&nbsp;branch&nbsp;<br>
+is&nbsp;duplicated&nbsp;and&nbsp;rotated&nbsp;around&nbsp;the&nbsp;centre&nbsp;to&nbsp;create&nbsp;the&nbsp;full&nbsp;snowflake.&nbsp;<br>
+The&nbsp;parts&nbsp;are&nbsp;combined,&nbsp;the&nbsp;flake&nbsp;is&nbsp;scaled&nbsp;and&nbsp;transformations&nbsp;are&nbsp;frozen.&nbsp;<br>
+The&nbsp;snowflake&nbsp;name&nbsp;is&nbsp;returned.</tt></dd></dl>
+ <dl><dt><a name="-makeShards"><strong>makeShards</strong></a>(number, size, sizeVar, rgb1, rgb2, transparency, glow)</dt><dd><tt>Creates&nbsp;a&nbsp;number&nbsp;of&nbsp;ice&nbsp;shard&nbsp;particles<br>
+&nbsp;<br>
+number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;particles&nbsp;to&nbsp;create<br>
+size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Radius&nbsp;of&nbsp;the&nbsp;particles<br>
+sizeVar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Variation&nbsp;in&nbsp;the&nbsp;radius<br>
+rgb1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;One&nbsp;end&nbsp;of&nbsp;the&nbsp;colour&nbsp;range&nbsp;in&nbsp;the&nbsp;form&nbsp;(r,g,b)<br>
+rgb2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;other&nbsp;end&nbsp;of&nbsp;the&nbsp;colour&nbsp;range&nbsp;in&nbsp;the&nbsp;form&nbsp;(r,g,b)<br>
+transparency&nbsp;:&nbsp;Alpha&nbsp;value&nbsp;for&nbsp;the&nbsp;shader<br>
+glow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Glow&nbsp;value&nbsp;for&nbsp;the&nbsp;shader<br>
+&nbsp;<br>
+The&nbsp;progress&nbsp;window&nbsp;is&nbsp;updated&nbsp;and&nbsp;the&nbsp;shading&nbsp;group&nbsp;list&nbsp;is&nbsp;created.&nbsp;<br>
+A&nbsp;while&nbsp;loop&nbsp;is&nbsp;initiated&nbsp;to&nbsp;create&nbsp;octahedrons,&nbsp;add&nbsp;them&nbsp;to&nbsp;the&nbsp;list&nbsp;<br>
+and&nbsp;assign&nbsp;shaders.&nbsp;The&nbsp;list&nbsp;of&nbsp;objects&nbsp;is&nbsp;returned.</tt></dd></dl>
+ <dl><dt><a name="-makeSnowflakes"><strong>makeSnowflakes</strong></a>(number, size, sizeVar, rgb1, rgb2, transparency, glow)</dt><dd><tt>Creates&nbsp;a&nbsp;number&nbsp;of&nbsp;snowflakes<br>
+&nbsp;<br>
+number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;particles&nbsp;to&nbsp;create<br>
+size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Radius&nbsp;of&nbsp;the&nbsp;snowflakes<br>
+sizeVar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Variation&nbsp;in&nbsp;the&nbsp;radius<br>
+rgb1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;One&nbsp;end&nbsp;of&nbsp;the&nbsp;colour&nbsp;range&nbsp;in&nbsp;the&nbsp;form&nbsp;(r,g,b)<br>
+rgb2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;other&nbsp;end&nbsp;of&nbsp;the&nbsp;colour&nbsp;range&nbsp;in&nbsp;the&nbsp;form&nbsp;(r,g,b)<br>
+transparency&nbsp;:&nbsp;Alpha&nbsp;value&nbsp;for&nbsp;the&nbsp;shader<br>
+glow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Glow&nbsp;value&nbsp;for&nbsp;the&nbsp;shader<br>
+&nbsp;<br>
+The&nbsp;progress&nbsp;window&nbsp;is&nbsp;updated&nbsp;and&nbsp;the&nbsp;shading&nbsp;group&nbsp;list&nbsp;is&nbsp;created.&nbsp;<br>
+A&nbsp;while&nbsp;loop&nbsp;is&nbsp;initiated&nbsp;to&nbsp;create&nbsp;snowflakes,&nbsp;add&nbsp;them&nbsp;to&nbsp;the&nbsp;list&nbsp;<br>
+and&nbsp;assign&nbsp;shaders.&nbsp;The&nbsp;list&nbsp;of&nbsp;objects&nbsp;is&nbsp;returned.</tt></dd></dl>
+</td></tr></table>
+</body></html>

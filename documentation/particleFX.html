@@ -1,0 +1,168 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module particleFX</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>particleFX</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/i7219595/Handins/CAP1/ROUSE_PHILIP/02_SCRIPTING/particleFX.py">/home/i7219595/Handins/CAP1/ROUSE_PHILIP/02_SCRIPTING/particleFX.py</a></font></td></tr></table>
+    <p><tt>Module&nbsp;of&nbsp;procedures&nbsp;to&nbsp;create&nbsp;the&nbsp;particle&nbsp;animations<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;contains&nbsp;the&nbsp;following&nbsp;classes&nbsp;and&nbsp;procedures<br>
+class:&nbsp;<a href="#particles">particles</a>&nbsp;:&nbsp;Contains&nbsp;procedures&nbsp;to&nbsp;animate&nbsp;individual&nbsp;<a href="#particles">particles</a>&nbsp;and&nbsp;stores&nbsp;there&nbsp;unique&nbsp;variables<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__init__&nbsp;:&nbsp;Saves&nbsp;the&nbsp;object's&nbsp;name&nbsp;to&nbsp;an&nbsp;instance&nbsp;of&nbsp;the&nbsp;class<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;explode&nbsp;&nbsp;:&nbsp;Emits&nbsp;a&nbsp;particle&nbsp;with&nbsp;decreasing&nbsp;speed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drift&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Adds&nbsp;particle&nbsp;drift&nbsp;and&nbsp;generates&nbsp;turbulence&nbsp;on&nbsp;new&nbsp;animation&nbsp;layers<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;birth&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Makes&nbsp;the&nbsp;particle&nbsp;visible&nbsp;on&nbsp;its&nbsp;birth&nbsp;frame<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;death&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Scales&nbsp;down&nbsp;the&nbsp;particle&nbsp;to&nbsp;0&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;its&nbsp;lifetime<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bake&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Combines&nbsp;all&nbsp;animation&nbsp;layers<br>
+emitCurve&nbsp;&nbsp;&nbsp;:&nbsp;Emits&nbsp;<a href="#particles">particles</a>&nbsp;from&nbsp;a&nbsp;curve<br>
+followCurve&nbsp;:&nbsp;Animates&nbsp;a&nbsp;trail&nbsp;of&nbsp;<a href="#particles">particles</a>&nbsp;following&nbsp;a&nbsp;curve<br>
+planeEmit&nbsp;&nbsp;&nbsp;:&nbsp;Emits&nbsp;<a href="#particles">particles</a>&nbsp;from&nbsp;a&nbsp;plane<br>
+reloadFile&nbsp;&nbsp;:&nbsp;Reloads&nbsp;Maya&nbsp;scene&nbsp;to&nbsp;free&nbsp;memory&nbsp;and&nbsp;increase&nbsp;performance<br>
+&nbsp;<br>
+In&nbsp;this&nbsp;module,&nbsp;one&nbsp;of&nbsp;the&nbsp;functions&nbsp;is&nbsp;called&nbsp;with&nbsp;a&nbsp;<br>
+particle&nbsp;list.&nbsp;Those&nbsp;<a href="#particles">particles</a>&nbsp;are&nbsp;then&nbsp;individually&nbsp;<br>
+animated&nbsp;using&nbsp;a&nbsp;combination&nbsp;of&nbsp;the&nbsp;class&nbsp;specific&nbsp;functions.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="particleFX.html#particles">particles</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="particles">class <strong>particles</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Contains&nbsp;procedures&nbsp;to&nbsp;animate&nbsp;individual&nbsp;<a href="#particles">particles</a>&nbsp;and&nbsp;stores&nbsp;their&nbsp;unique&nbsp;variables<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="particles-__init__"><strong>__init__</strong></a>(self, name)</dt><dd><tt>Saves&nbsp;the&nbsp;object's&nbsp;name&nbsp;to&nbsp;an&nbsp;instance&nbsp;of&nbsp;the&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="particles-bake"><strong>bake</strong></a>(self)</dt><dd><tt>Bakes&nbsp;animation&nbsp;from&nbsp;all&nbsp;animation&nbsp;layers&nbsp;to&nbsp;the&nbsp;'BaseAnimation'&nbsp;layer</tt></dd></dl>
+
+<dl><dt><a name="particles-birth"><strong>birth</strong></a>(self)</dt><dd><tt>Keys&nbsp;object&nbsp;visibility&nbsp;to&nbsp;'off'&nbsp;before&nbsp;its&nbsp;birth&nbsp;frame&nbsp;and&nbsp;'on'&nbsp;on&nbsp;its&nbsp;birth&nbsp;frame</tt></dd></dl>
+
+<dl><dt><a name="particles-death"><strong>death</strong></a>(self)</dt><dd><tt>Through&nbsp;several&nbsp;if&nbsp;statements,&nbsp;validates&nbsp;the&nbsp;lifeTime&nbsp;and&nbsp;fadeOut&nbsp;<br>
+values,&nbsp;then&nbsp;keys&nbsp;scale&nbsp;channel&nbsp;to&nbsp;0&nbsp;over&nbsp;fade&nbsp;out&nbsp;time&nbsp;and&nbsp;then&nbsp;<br>
+sets&nbsp;visibility&nbsp;to&nbsp;'off'</tt></dd></dl>
+
+<dl><dt><a name="particles-drift"><strong>drift</strong></a>(self, start, (driftX, driftY, driftZ), turbulenceAmp, turbulencePer)</dt><dd><tt>Adds&nbsp;particle&nbsp;drift&nbsp;and&nbsp;generates&nbsp;turbulence&nbsp;on&nbsp;new&nbsp;animation&nbsp;layers<br>
+&nbsp;<br>
+start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Frame&nbsp;to&nbsp;start&nbsp;the&nbsp;drift&nbsp;and&nbsp;turbulence<br>
+driftX/Y/Z&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Distance&nbsp;to&nbsp;move&nbsp;the&nbsp;particle&nbsp;linearly&nbsp;over&nbsp;10&nbsp;frames<br>
+turbulenceAmp&nbsp;:&nbsp;Amplitude&nbsp;of&nbsp;the&nbsp;turbulence&nbsp;animation&nbsp;graph<br>
+turbulencePer&nbsp;:&nbsp;Period&nbsp;of&nbsp;the&nbsp;turbulence&nbsp;animation&nbsp;graph<br>
+&nbsp;<br>
+The&nbsp;procedures&nbsp;creates&nbsp;the&nbsp;two&nbsp;animation&nbsp;layers&nbsp;if&nbsp;they&nbsp;do&nbsp;not&nbsp;already&nbsp;<br>
+exist&nbsp;then&nbsp;keys&nbsp;the&nbsp;X,&nbsp;Y&nbsp;and&nbsp;Z&nbsp;translate&nbsp;for&nbsp;one&nbsp;frame&nbsp;then&nbsp;sets&nbsp;it&nbsp;to&nbsp;<br>
+repeat&nbsp;to&nbsp;infinity&nbsp;linearly.&nbsp;It&nbsp;then&nbsp;keys&nbsp;both&nbsp;the&nbsp;translate&nbsp;and&nbsp;rotate&nbsp;<br>
+channels&nbsp;on&nbsp;the&nbsp;turbulence&nbsp;layer&nbsp;and&nbsp;sets&nbsp;them&nbsp;to&nbsp;repeat&nbsp;and&nbsp;oscillate&nbsp;<br>
+to&nbsp;infinity.</tt></dd></dl>
+
+<dl><dt><a name="particles-explode"><strong>explode</strong></a>(self, start, duration, distance)</dt><dd><tt>Emits&nbsp;a&nbsp;particle&nbsp;along&nbsp;its&nbsp;local&nbsp;Y&nbsp;axis&nbsp;with&nbsp;decreasing&nbsp;speed<br>
+&nbsp;<br>
+start&nbsp;:&nbsp;Start&nbsp;of&nbsp;emission&nbsp;frame<br>
+duration&nbsp;:&nbsp;Number&nbsp;of&nbsp;frames&nbsp;to&nbsp;reach&nbsp;final&nbsp;destination<br>
+distance&nbsp;:&nbsp;Total&nbsp;distance&nbsp;to&nbsp;move&nbsp;object<br>
+&nbsp;<br>
+The&nbsp;procedure&nbsp;first&nbsp;keys&nbsp;the&nbsp;object's&nbsp;position&nbsp;at&nbsp;the&nbsp;first&nbsp;<br>
+frame&nbsp;when&nbsp;it&nbsp;is&nbsp;emitted&nbsp;then&nbsp;moves&nbsp;it&nbsp;the&nbsp;set&nbsp;distance&nbsp;along&nbsp;<br>
+its&nbsp;object&nbsp;Y&nbsp;axis&nbsp;and&nbsp;keys&nbsp;the&nbsp;end&nbsp;frame.&nbsp;Through&nbsp;several&nbsp;if&nbsp;<br>
+statement,&nbsp;it&nbsp;works&nbsp;out&nbsp;the&nbsp;angles&nbsp;and&nbsp;weights&nbsp;to&nbsp;set&nbsp;the&nbsp;<br>
+keyframe&nbsp;handles&nbsp;to.</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-emitCurve"><strong>emitCurve</strong></a>(sourceCurve, curveStart, duration, particleList, maxDistance, minDistance, emitTime, lifeTime, lifeTimeVar, fadeOut, turbulenceAmp, turbulencePer, drift)</dt><dd><tt>Emits&nbsp;<a href="#particles">particles</a>&nbsp;from&nbsp;a&nbsp;curve<br>
+&nbsp;<br>
+sourceCurve&nbsp;&nbsp;&nbsp;:&nbsp;Name&nbsp;of&nbsp;the&nbsp;curve&nbsp;<a href="#particles">particles</a>&nbsp;will&nbsp;emit&nbsp;from<br>
+curveStart&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Frame&nbsp;to&nbsp;start&nbsp;emission<br>
+duration&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;frames&nbsp;to&nbsp;emit&nbsp;for<br>
+particleList&nbsp;&nbsp;:&nbsp;List&nbsp;containing&nbsp;names&nbsp;of&nbsp;all&nbsp;the&nbsp;<a href="#particles">particles</a>&nbsp;to&nbsp;be&nbsp;animatied<br>
+maxDistance&nbsp;&nbsp;&nbsp;:&nbsp;Maximum&nbsp;distance&nbsp;<a href="#particles">particles</a>&nbsp;will&nbsp;be&nbsp;emitted&nbsp;from&nbsp;at&nbsp;the&nbsp;middle&nbsp;of&nbsp;the&nbsp;curve<br>
+minDistance&nbsp;&nbsp;&nbsp;:&nbsp;Maximum&nbsp;distance&nbsp;<a href="#particles">particles</a>&nbsp;will&nbsp;be&nbsp;emitted&nbsp;from&nbsp;at&nbsp;the&nbsp;start&nbsp;and&nbsp;end&nbsp;of&nbsp;the&nbsp;curve<br>
+emitTime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;frames&nbsp;<a href="#particles">particles</a>&nbsp;will&nbsp;be&nbsp;affected&nbsp;by&nbsp;the&nbsp;emission&nbsp;force<br>
+lifeTime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Average&nbsp;lifetime&nbsp;of&nbsp;a&nbsp;particle<br>
+lifeTimeVar&nbsp;&nbsp;&nbsp;:&nbsp;Variation&nbsp;from&nbsp;average&nbsp;lifetime&nbsp;as&nbsp;a&nbsp;percentage<br>
+fadeOut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;frames&nbsp;to&nbsp;scale&nbsp;down&nbsp;<a href="#particles">particles</a>&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;their&nbsp;lifetime<br>
+turbulenceAmp&nbsp;:&nbsp;Amplitude&nbsp;of&nbsp;the&nbsp;turbulence&nbsp;animation&nbsp;graph<br>
+turbulencePer&nbsp;:&nbsp;Period&nbsp;of&nbsp;the&nbsp;turbulence&nbsp;animation&nbsp;graph<br>
+drift&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Distance&nbsp;a&nbsp;particle&nbsp;will&nbsp;drift&nbsp;10&nbsp;frames.&nbsp;Contains&nbsp;(x,y,z)<br>
+&nbsp;<br>
+Updates&nbsp;the&nbsp;progress&nbsp;window&nbsp;and&nbsp;assigns&nbsp;all&nbsp;the&nbsp;elements&nbsp;in&nbsp;particleList&nbsp;to&nbsp;the&nbsp;class&nbsp;<a href="#particles">particles</a>.&nbsp;<br>
+Creates&nbsp;a&nbsp;locator&nbsp;and&nbsp;keys&nbsp;it&nbsp;to&nbsp;follow&nbsp;the&nbsp;curve&nbsp;linearly&nbsp;over&nbsp;the&nbsp;emission&nbsp;time.&nbsp;At&nbsp;the&nbsp;emit&nbsp;<br>
+time,&nbsp;copies&nbsp;the&nbsp;coordinates&nbsp;of&nbsp;the&nbsp;locator&nbsp;and&nbsp;moves&nbsp;particle&nbsp;to&nbsp;that&nbsp;location&nbsp;and&nbsp;add&nbsp;a&nbsp;random&nbsp;<br>
+rotation.&nbsp;The&nbsp;distance&nbsp;is&nbsp;calculated&nbsp;depending&nbsp;on&nbsp;the&nbsp;time&nbsp;the&nbsp;particle&nbsp;is&nbsp;emitted.&nbsp;Runs&nbsp;the&nbsp;<br>
+relevant&nbsp;class&nbsp;specific&nbsp;procedures&nbsp;to&nbsp;animate&nbsp;the&nbsp;particle.</tt></dd></dl>
+ <dl><dt><a name="-followCurve"><strong>followCurve</strong></a>(sourceCurve, curveStart, duration, particleList, maxDistance, minDistance, nose, tail, length, turbulenceAmp, turbulencePer)</dt><dd><tt>Creates&nbsp;a&nbsp;trail&nbsp;of&nbsp;<a href="#particles">particles</a>&nbsp;following&nbsp;the&nbsp;source&nbsp;curve<br>
+&nbsp;<br>
+sourceCurve&nbsp;&nbsp;&nbsp;:&nbsp;Name&nbsp;of&nbsp;the&nbsp;curve&nbsp;<a href="#particles">particles</a>&nbsp;will&nbsp;emit&nbsp;from<br>
+curveStart&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Frame&nbsp;to&nbsp;start&nbsp;emission<br>
+duration&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;frames&nbsp;to&nbsp;emit&nbsp;for<br>
+particleList&nbsp;&nbsp;:&nbsp;List&nbsp;containing&nbsp;names&nbsp;of&nbsp;all&nbsp;the&nbsp;<a href="#particles">particles</a>&nbsp;to&nbsp;be&nbsp;animatied<br>
+maxDistance&nbsp;&nbsp;&nbsp;:&nbsp;Maximum&nbsp;distance&nbsp;<a href="#particles">particles</a>&nbsp;will&nbsp;be&nbsp;emitted&nbsp;from&nbsp;the&nbsp;curve&nbsp;at&nbsp;the&nbsp;middle&nbsp;of&nbsp;the&nbsp;trail<br>
+minDistance&nbsp;&nbsp;&nbsp;:&nbsp;Maximum&nbsp;distance&nbsp;<a href="#particles">particles</a>&nbsp;will&nbsp;be&nbsp;emitted&nbsp;from&nbsp;the&nbsp;curve&nbsp;at&nbsp;the&nbsp;nose&nbsp;and&nbsp;tail&nbsp;of&nbsp;the&nbsp;trail<br>
+nose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;frames&nbsp;to&nbsp;taper&nbsp;the&nbsp;front&nbsp;of&nbsp;the&nbsp;trail<br>
+tail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;frames&nbsp;to&nbsp;taper&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;trail<br>
+length&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Length&nbsp;of&nbsp;the&nbsp;trail&nbsp;in&nbsp;frames<br>
+emitTime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;frames&nbsp;<a href="#particles">particles</a>&nbsp;will&nbsp;be&nbsp;affected&nbsp;by&nbsp;the&nbsp;emission&nbsp;force<br>
+turbulenceAmp&nbsp;:&nbsp;Amplitude&nbsp;of&nbsp;the&nbsp;turbulence&nbsp;animation&nbsp;graph<br>
+turbulencePer&nbsp;:&nbsp;Period&nbsp;of&nbsp;the&nbsp;turbulence&nbsp;animation&nbsp;graph<br>
+&nbsp;<br>
+Updates&nbsp;the&nbsp;progress&nbsp;window&nbsp;and&nbsp;assigns&nbsp;all&nbsp;the&nbsp;elements&nbsp;in&nbsp;particleList&nbsp;to&nbsp;the&nbsp;class&nbsp;<a href="#particles">particles</a>.&nbsp;<br>
+Particle&nbsp;assigned&nbsp;to&nbsp;the&nbsp;source&nbsp;curve&nbsp;as&nbsp;a&nbsp;motion&nbsp;path&nbsp;and&nbsp;this&nbsp;motion&nbsp;is&nbsp;baked&nbsp;here&nbsp;as&nbsp;Maya&nbsp;<br>
+doesn't&nbsp;correctly&nbsp;combine&nbsp;animation&nbsp;layers&nbsp;when&nbsp;motion&nbsp;paths&nbsp;are&nbsp;used.&nbsp;The&nbsp;particle&nbsp;offset&nbsp;<br>
+calculated&nbsp;and&nbsp;keyed.&nbsp;Turbulence&nbsp;is&nbsp;added&nbsp;and&nbsp;visibility&nbsp;is&nbsp;temporarily&nbsp;set&nbsp;to&nbsp;'off'&nbsp;to&nbsp;speed&nbsp;up<br>
+processing&nbsp;of&nbsp;subsequent&nbsp;<a href="#particles">particles</a>.&nbsp;After&nbsp;all&nbsp;<a href="#particles">particles</a>&nbsp;are&nbsp;animated,&nbsp;birth&nbsp;and&nbsp;death&nbsp;are&nbsp;keyed.</tt></dd></dl>
+ <dl><dt><a name="-planeEmit"><strong>planeEmit</strong></a>(sourcePlane, start, emitTime, particleList, maxDistance, minDistance, maxAngle, forceTime, lifeTime, lifeTimeVar, fadeOut, turbulenceAmp, turbulencePer, drift)</dt><dd><tt>Emits&nbsp;<a href="#particles">particles</a>&nbsp;from&nbsp;a&nbsp;plane<br>
+&nbsp;<br>
+sourcePlane&nbsp;&nbsp;&nbsp;:&nbsp;Name&nbsp;of&nbsp;the&nbsp;plane&nbsp;<a href="#particles">particles</a>&nbsp;will&nbsp;emit&nbsp;from<br>
+start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Frame&nbsp;to&nbsp;start&nbsp;emission<br>
+emitTime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;frames&nbsp;to&nbsp;emit&nbsp;for<br>
+particleList&nbsp;&nbsp;:&nbsp;List&nbsp;containing&nbsp;names&nbsp;of&nbsp;all&nbsp;the&nbsp;<a href="#particles">particles</a>&nbsp;to&nbsp;be&nbsp;animatied<br>
+maxDistance&nbsp;&nbsp;&nbsp;:&nbsp;Maximum&nbsp;distance&nbsp;<a href="#particles">particles</a>&nbsp;will&nbsp;be&nbsp;emitted&nbsp;from&nbsp;at&nbsp;the&nbsp;middle&nbsp;of&nbsp;the&nbsp;curve<br>
+minDistance&nbsp;&nbsp;&nbsp;:&nbsp;Maximum&nbsp;distance&nbsp;<a href="#particles">particles</a>&nbsp;will&nbsp;be&nbsp;emitted&nbsp;from&nbsp;at&nbsp;the&nbsp;start&nbsp;and&nbsp;end&nbsp;of&nbsp;the&nbsp;curve<br>
+maxAngle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Maximum&nbsp;angle&nbsp;to&nbsp;emit&nbsp;<a href="#particles">particles</a>&nbsp;at<br>
+forceTime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;frames&nbsp;<a href="#particles">particles</a>&nbsp;will&nbsp;be&nbsp;affected&nbsp;by&nbsp;the&nbsp;emission&nbsp;force<br>
+lifeTime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Average&nbsp;lifetime&nbsp;of&nbsp;a&nbsp;particle<br>
+lifeTimeVar&nbsp;&nbsp;&nbsp;:&nbsp;Variation&nbsp;from&nbsp;average&nbsp;lifetime&nbsp;as&nbsp;a&nbsp;percentage<br>
+fadeOut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Number&nbsp;of&nbsp;frames&nbsp;to&nbsp;scale&nbsp;down&nbsp;<a href="#particles">particles</a>&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;their&nbsp;lifetime<br>
+turbulenceAmp&nbsp;:&nbsp;Amplitude&nbsp;of&nbsp;the&nbsp;turbulence&nbsp;animation&nbsp;graph<br>
+turbulencePer&nbsp;:&nbsp;Period&nbsp;of&nbsp;the&nbsp;turbulence&nbsp;animation&nbsp;graph<br>
+drift&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Distance&nbsp;a&nbsp;particle&nbsp;will&nbsp;drift&nbsp;10&nbsp;frames.&nbsp;Contains&nbsp;(x,y,z)<br>
+&nbsp;<br>
+Updates&nbsp;the&nbsp;progress&nbsp;window&nbsp;and&nbsp;assigns&nbsp;all&nbsp;the&nbsp;elements&nbsp;in&nbsp;particleList&nbsp;to&nbsp;the&nbsp;class&nbsp;<a href="#particles">particles</a>.&nbsp;<br>
+Constrains&nbsp;particle&nbsp;to&nbsp;plane&nbsp;to&nbsp;copy&nbsp;its&nbsp;location&nbsp;and&nbsp;orientation&nbsp;then&nbsp;deletes&nbsp;the&nbsp;constraint&nbsp;<br>
+and&nbsp;adds&nbsp;a&nbsp;random&nbsp;rotation&nbsp;in&nbsp;the&nbsp;object&nbsp;y&nbsp;axis&nbsp;and&nbsp;moves&nbsp;the&nbsp;particle&nbsp;a&nbsp;random&nbsp;distance&nbsp;away&nbsp;<br>
+from&nbsp;the&nbsp;plane&nbsp;centre&nbsp;along&nbsp;its&nbsp;surface.&nbsp;Emission&nbsp;angle&nbsp;is&nbsp;randomly&nbsp;chosen&nbsp;and&nbsp;applied&nbsp;to&nbsp;object&nbsp;<br>
+z&nbsp;axis&nbsp;so&nbsp;that&nbsp;all&nbsp;<a href="#particles">particles</a>&nbsp;move&nbsp;in&nbsp;line&nbsp;with&nbsp;the&nbsp;plane&nbsp;centre.&nbsp;Runs&nbsp;the&nbsp;relevant&nbsp;class&nbsp;specific&nbsp;<br>
+procedures&nbsp;to&nbsp;animate&nbsp;the&nbsp;particle.</tt></dd></dl>
+ <dl><dt><a name="-reloadFile"><strong>reloadFile</strong></a>()</dt><dd><tt>Reloads&nbsp;Maya&nbsp;scene&nbsp;to&nbsp;free&nbsp;memory&nbsp;and&nbsp;increase&nbsp;performance.<br>
+&nbsp;<br>
+A&nbsp;copy&nbsp;of&nbsp;the&nbsp;file&nbsp;is&nbsp;saved&nbsp;as&nbsp;filename.tmp&nbsp;and&nbsp;opened.&nbsp;The&nbsp;open&nbsp;file&nbsp;is&nbsp;renamed&nbsp;to&nbsp;the&nbsp;original&nbsp;filename</tt></dd></dl>
+</td></tr></table>
+</body></html>
