@@ -25,6 +25,7 @@ Copy the contents of the /icons and /scripts folders to your maya prefs folders 
 run:
 
 >>>import snowflakeGUI
+
 >>>reload(snowflakeGUI)
 
 in the maya script editor or save it to your shelf
